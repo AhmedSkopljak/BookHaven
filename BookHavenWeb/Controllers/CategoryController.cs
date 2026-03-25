@@ -1,5 +1,5 @@
-﻿using BookHavenWeb.Data;
-using BookHavenWeb.Models;
+﻿using BookHaven.DataAccess.Data;
+using BookHaven.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookHavenWeb.Controllers;
