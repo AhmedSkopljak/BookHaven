@@ -3,8 +3,9 @@ using BookHaven.DataAccess.Repository.IRepository;
 using BookHaven.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookHavenWeb.Controllers;
+namespace BookHavenWeb.Areas.Admin.Controllers;
 
+[Area("Admin")]
 public class CategoryController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;

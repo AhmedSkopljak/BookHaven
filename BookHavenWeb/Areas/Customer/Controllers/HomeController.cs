@@ -2,8 +2,9 @@ using System.Diagnostics;
 using BookHaven.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookHavenWeb.Controllers;
+namespace BookHavenWeb.Areas.Customer.Controllers;
 
+[Area("Customer")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
