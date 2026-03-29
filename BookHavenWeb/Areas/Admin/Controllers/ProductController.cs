@@ -1,6 +1,8 @@
 ﻿using BookHaven.DataAccess.Repository.IRepository;
 using BookHaven.Models;
+using BookHaven.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BookHavenWeb.Areas.Admin.Controllers;
@@ -23,21 +25,36 @@ public class ProductController : Controller
     }
     public IActionResult Create()
     {
-        return View();
+        ProductVM productVm = new()
+        {
+            CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem()
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            }),
+            Product = new Product()
+        };
+        return View(productVm);
     }
 
     [HttpPost]
-    public IActionResult Create(Product obj)
+    public IActionResult Create(ProductVM productVm)
     {
         if (ModelState.IsValid)
         {
-            _unitOfWork.Product.Add(obj);
+            _unitOfWork.Product.Add(productVm.Product);
             _unitOfWork.Save();
             TempData["success"] = "Product created successfully";
             return RedirectToAction("Index");
+        }else
+        {
+            productVm.CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem()
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+            return View(productVm); 
         }
-        
-        return View();
     }
 
     public IActionResult Edit(int? id)
