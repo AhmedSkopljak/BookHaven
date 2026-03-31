@@ -63,7 +63,7 @@ public class ProductController : Controller
                 file.CopyTo(fileStream);
             }
             
-            productVm.Product.ImageUrl = @"images\product\"+fileName;
+            productVm.Product.ImageUrl = @"\images\product\"+fileName;
         }
         if (ModelState.IsValid)
         {
