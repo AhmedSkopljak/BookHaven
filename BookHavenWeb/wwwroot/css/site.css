@@ -535,3 +535,22 @@ bg-success {
   border-color: #578553;
 }
 
+.card-link-hover {
+  display: block; /* Da bi link obuhvatio celu visinu/širinu kartice */
+  transition: transform 0.3s ease-in-out;
+  color: inherit; /* Sprečava da tekst postane plav jer je unutar <a> */
+}
+
+.card-link-hover:hover {
+  transform: scale(1.02);
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-link-hover .card {
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.card-link-hover:hover .card {
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important; /* Jača senka na hover za bolji efekat */
+}
