@@ -126,4 +126,15 @@ public class ProductController : Controller
         TempData["success"] = "Product deleted successfully";
         return RedirectToAction("Index");
     }
+
+    #region API CALLS
+
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
+        return Json(new {data=objProductList});
+    }
+
+    #endregion
 }
