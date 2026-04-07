@@ -1,5 +1,19 @@
+# Rider & Visual Studio
+.idea/
+.vs/
+*.sln.iml
+*.user
+
+# Build output
 bin/
 obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
+publish/
+
+# Razor & Temp
+*Razor_temp/
+*WebRazor_temp/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
