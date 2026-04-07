@@ -1,11 +1,14 @@
 ﻿using BookHaven.DataAccess.Data;
 using BookHaven.DataAccess.Repository.IRepository;
 using BookHaven.Models;
+using BookHaven.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookHavenWeb.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = SD.Role_Admin)]
 public class CategoryController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
