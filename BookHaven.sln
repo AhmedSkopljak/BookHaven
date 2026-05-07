@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Utility", "BookHa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.DataAccess", "BookHaven.DataAccess\BookHaven.DataAccess.csproj", "{130768DB-E8C3-41FA-ACB3-9A4EB81B54AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookHaven.Tests", "BookHaven.Tests\BookHaven.Tests.csproj", "{E668524F-361A-45FB-B13D-D378A8CA80DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{130768DB-E8C3-41FA-ACB3-9A4EB81B54AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{130768DB-E8C3-41FA-ACB3-9A4EB81B54AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{130768DB-E8C3-41FA-ACB3-9A4EB81B54AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E668524F-361A-45FB-B13D-D378A8CA80DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E668524F-361A-45FB-B13D-D378A8CA80DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E668524F-361A-45FB-B13D-D378A8CA80DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E668524F-361A-45FB-B13D-D378A8CA80DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
