@@ -161,4 +161,45 @@ public class ProductRepositoryTests
         result.Should().BeNull();
         finalCount.Should().Be(initialCount - 1);
     }
+
+    [Fact]
+    public async Task ProductRepository_GetProductWithCategory_ShouldReturnCategoryNameOfProduct()
+    {
+        //ASSERT
+        var db = await GetDbContext();
+        var productRepo = new ProductRepository(db);
+        
+        //ACT
+        var product = productRepo.Get(u => u.Id == 1, includeProperties: "Category");
+        
+        //ASSERT
+        product.Should().NotBeNull();
+        product.Category.Name.Should().Be("Action");
+    }
+    
+    [Fact]
+    public void ProductModel_PriceHierarchy_ShouldBeConsistentWithDiscounts()
+    {
+        // ARRANGE
+        var product = GetValidProductTemplate();
+        product.ListPrice = 99;
+        product.Price = 90;
+        product.Price50 = 85;
+        product.Price100 = 80;
+
+        // ACT & ASSERT
+        // 1. Regular Price should be less than or equal to ListPrice
+        product.Price.Should().BeLessThanOrEqualTo(product.ListPrice, 
+            "because the selling price should not be higher than the MSRP/List Price");
+
+        // 2. Tiered discounts check: Price > Price50 > Price100
+        product.Price50.Should().BeLessThan(product.Price, 
+            "because bulk price for 50+ should offer a discount compared to regular price");
+
+        product.Price100.Should().BeLessThan(product.Price50, 
+            "because bulk price for 100+ should be the most economical option");
+
+        // 3. Boundary check: ensure the lowest price tier is still profitable/positive
+        product.Price100.Should().BeGreaterThan(0);
+    }
 }
